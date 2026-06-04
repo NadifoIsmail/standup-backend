@@ -93,7 +93,8 @@ def get_stats():
 
         posts_per_day.append({
             "date": day.strftime("%Y-%m-%d"),
-            "posts": count
+            "count": count,
+            "blockers": blockers
         })
 
     return jsonify({
