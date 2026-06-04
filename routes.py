@@ -59,7 +59,7 @@ def create_standup():
         blockers=blockers,
         has_blocker=has_blocker,
         file_attachment=filename,
-        timestamp=datetime.now()
+        timestamp=datetime.utcnow() + timedelta(hours=3)
     )
 
     db.session.add(new_post)
