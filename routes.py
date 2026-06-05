@@ -11,7 +11,7 @@ UPLOAD_FOLDER = "uploads"
 
 
 # GET ALL STANDUPS
-@standup_bp.route("/standups", methods=["GET"])
+@standup_bp.route("/standups/", methods=["GET"])
 def get_standups():
 
     standups = StandupPost.query.order_by(
@@ -22,7 +22,7 @@ def get_standups():
 
 
 # CREATE STANDUP
-@standup_bp.route("/standups", methods=["POST"])
+@standup_bp.route("/standups/", methods=["POST"])
 def create_standup():
 
     author = request.form.get("author")
@@ -69,7 +69,7 @@ def create_standup():
 
 
 # DASHBOARD STATS
-@standup_bp.route("/standups/stats", methods=["GET"])
+@standup_bp.route("/standups/stats/", methods=["GET"])
 def get_stats():
 
     posts_per_day = []
