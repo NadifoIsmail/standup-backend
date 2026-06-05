@@ -68,25 +68,6 @@ def create_standup():
     return jsonify(new_post.to_dict()), 201
 
 
-# DELETE STANDUP
-@standup_bp.route("/standups/<int:id>", methods=["DELETE"])
-def delete_standup(id):
-   post = StandupPost.query.get(id)
-  
-   if not post:
-       return jsonify({"error": "Standup not found"}), 404
-  
-   # Delete the file if it exists
-   if post.file_attachment:
-       file_path = os.path.join(UPLOAD_FOLDER, post.file_attachment)
-       if os.path.exists(file_path):
-           os.remove(file_path)
-  
-   db.session.delete(post)
-   db.session.commit()
-  
-   return jsonify({"message": "Standup deleted successfully"}), 200
-
 # DASHBOARD STATS
 @standup_bp.route("/standups/stats/", methods=["GET"])
 def get_stats():
